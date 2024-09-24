@@ -1,0 +1,108 @@
+Pseudocode-Assignments
+
+
+1.Sum of three numbers
+
+1.Create three integer variables firstNumber, secoundNumber, thirdNumber
+2.Get input for the first number from user to firstNumber
+3.Get input for the secound number from user to secoundNumber
+4.Get input for the third number from user to thirdNumber
+5.Create Integer variable sum
+6.Perform arthmetic operation firstNumber+secoundNumber+thirdNumber and store the result in sum
+
+
+2.Sum of squares of two numbers
+
+1.Create two integer variables firstNumber, secoundNumber
+2.Get input for the first number from user to firstNumber
+3.Get input for the secound number from user to secoundNumber
+4.Perform arthemetic operation firstNumber*firstNumber and store the result in firstNumber
+5.Perform arthemetic operation secoundNumber*secounfNumber and store the result in secoundNumber
+6.Perform arthemetic operation firtNumber+secoundNumber and store the result in firstNumber
+
+
+3.Reverse a number
+
+1.Enter the number to reversre
+2.create integer reverseNumber
+3.while(number>0)
+    3.1 revereseNumber=reverseNumber*10+number%10
+    3.2 number=number/10;
+Print reverseNumber
+
+
+4. Reverse a string
+
+1.Enter the string
+2.create new empty string
+3.iterate throung the orginal string from last character and store each character in the new string
+4.Print the new string
+
+
+5. Find the given character in the string, return true or false
+
+1.Enter the string
+2.enter the character to search
+3.iterate through the string from first character
+    3.1 if character matches the character to search return true
+4.Return false
+
+
+6. Find the number of occurrences of a character in a given string
+
+1.Enter the string
+2.Enter the character to to count
+3.Initialize integer count to 0
+4.Iterate through the string 4.1 if charcter matches the character to count, then increment count
+5.print count
+
+
+7. Fibonacci series of numbers
+
+1.Start with 0 as first number and 1 as secound number
+2.To find next number add the last two numbers
+3.repeat steps 1 and 2 until desired length
+
+
+8. Tower of Hanoi
+
+Scenerio: Three poles A, B, C. Pole A has N disk, the larger disk will be always below smaller disk
+Objective : move disks from pole A to C
+1.If number of Disk in pole is 1:
+    1.1 move disk in pole A to C, return
+2.Move top N-1 disks from peg A to peg B, using C as helper.
+3.Move Largest Disk from A to C
+4.Make N-1th disk on top of nth disk by using A as helper
+5.continue the the process until all disks are correctly arranged in pole c.
+
+
+9. Linear search
+
+1.Enter the array to search
+2.Enter key to search
+3.Iterate through the array and check if the element in the array mathes the key
+    3.1 If matches return true
+4.Return false
+
+
+10. Binary search
+
+1.input the sorted array
+2.input key to search
+3.initialse integer low=0, high=length of array -1
+4.while(low< high)
+    mid=low+(low+High)/2
+    if(array[mid]==key) return mid
+    if(key<array[mid])=> high=mid
+    else low=mid;
+
+
+11. Bubble Sort
+
+1.Input the array to sort
+2.initialise integer n with length of the array
+3.loop the array from index 0 to n-1
+    3.1 loop array from 0 to n-i-
+4.if array[j]>array[j+1]
+5.swap array[j] and array[j+1]
+6.return array
