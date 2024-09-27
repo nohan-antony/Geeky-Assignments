@@ -23,29 +23,6 @@ namespace Assgnment3_Q1
             Console.ReadLine();
         }
     }
-    internal class Employee
-    {
-        public int id { get; private set; }
-        string name { get; set; }
-        double salary { get; set; }
-        string emoloyee_type { get; set; }
-
-        public Employee(int id1, string name1, int salary1)
-        {
-            id = id1;
-            name = name1;
-            salary = salary1;
-            emoloyee_type = "Contract";
-
-        }
-        public void display()
-        {
-            Console.WriteLine("Id :" + id);
-            Console.WriteLine("Employee Name :" + name);
-            Console.WriteLine("Salary :" + salary);
-        }
-    }
-
 
 
 }
