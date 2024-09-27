@@ -7,7 +7,7 @@ CREATE TABLE Employees (
     FirstName NVARCHAR(50),      
     LastName NVARCHAR(50),       
     Dept Varchar(50),       
-	Salary int
+	Salary decimal
     
 );
 
@@ -61,7 +61,7 @@ ADD CONSTRAINT chk_salary_positive CHECK (Salary > 0);
 --12.How would you add a UNIQUE constraint to the Employees table to ensure that no two employees can have the same email address
 
  Alter table Employees
-add Email Varchar(30) unique;
+add Email Varchar(30) UNIQUE;
 
 --13. Write an ALTER TABLE statement to add an "Email" column to the Employees table with a UNIQUE constraint that allows NULL values
 
@@ -71,6 +71,7 @@ add  Email varchar(20);
 
 create nonclustered index ix_emp_email on
 Employees(Email);
+WHERE Email is NOT NULL
 
 
 
