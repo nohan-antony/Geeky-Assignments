@@ -69,3 +69,53 @@ SELECT REPLACE('database management','a','e');
 --20. From a 'Products' table, write a query to replace all spaces in product names with underscores.
 SELECT REPLACE(PRODUCT_NAME,' ','-') FROM PRODUCT;
 
+--21. Create a string of 10 asterisks (*).
+SELECT REPLICATE('*',10);
+
+
+--22. Write a query to pad all product codes in a 'Products' table to a length of 10 characters with leading zeros.
+SELECT RIGHT(REPLICATE('0',10)+PRODUCT_ID,10) AS PRODCUT_ID_10 FROM PRODUCT;
+
+--23. Insert the string 'New ' at the beginning of 'York City'.
+UPDATE CUSTOMERS
+SET CITY='New '+CITY
+WHERE CITY='York City';
+SELECT * FROM CUSTOMERS;
+--24. From an 'Emails' table, mask the username part of email addresses, showing only the first and last characters.
+SELECT * FROM EMAILEMP;
+SELECT CONCAT(LEFT(EMAIL,1),REPLICATE('*',LEN(EMAIL)-2),RIGHT(EMAIL,1)) AS MASKED 
+FROM EMAILEMP;
+
+--25. Convert the string 'sql server' to uppercase.
+SELECT UPPER('sql server');
+--26. Write a query to convert all customer names in a 'Customers' table to uppercase.
+SELECT UPPER(CUSTOMERNAME)AS CUSTOMERNAME FROM CUSTOMERS;
+
+--27. Convert the string 'SQL SERVER' to lowercase.
+SELECT LOWER('SQL SERVER') AS LOWER_CASE;
+--28. From a 'Products' table, write a query to convert all product descriptions to lowercase.
+SELECT LOWER(PRODUCT_ID) FROM PRODUCT;
+--29. Remove trailing spaces from the string 'SQL Server    '.
+SELECT RTRIM('SQL Server    ');
+--30. Write a query to remove trailing spaces from all email addresses in an 'Employees' table.
+SELECT RTRIM(EMAIL) AS EMAIL FROM EMAILEMP;
+
+--31. Remove leading spaces from the string '   SQL Server'.
+SELECT LTRIM('   SQL Server');
+--32. From a 'Comments' table, write a query to remove leading spaces from all comment texts.
+SELECT LTRIM(COMMENT) FROM COMMENTS;
+
+--33. Display the current date in the format 'dd-MM-yyyy'.
+SELECT CONVERT(DATE, GETDATE()) AS CURRENT_DATE;
+--34. From an 'Orders' table with an 'OrderTotal' column, display the total as a currency with 2 decimal places.
+SELECT CAST(SUM(OrderTotal) AS decimal(10,2) ) AS ODERTOTAL_FORMATED;
+
+--35. Separate the string 'apple,banana,cherry' into individual fruits.
+SELECT VALUE AS FRUIT FROM
+STRING_SPLIT('apple,banana,cherry',',') AS FRUITS
+--36. From a 'Skills' table with a 'SkillList' column containing comma-separated skills, write a query to create a row 
+--for each individual skill.
+
+SELECT SKILL_LIST FROM Skills
+STRING_SPLIT(SkillList,',') AS SKILL_LIST;
+
