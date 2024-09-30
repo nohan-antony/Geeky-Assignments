@@ -10,18 +10,18 @@ namespace Animal
     {
         static void Main(string[] args)
         {
-            cat Cat = new cat("kitty");
-            dog Dog = new dog("Rocky");
-            bird Bird = new bird("Ace");
+              Cat cat  = new cat("kitty");
+              Dog dog  = new dog("Rocky");
+              Bird  bird  = new bird("Ace");
 
-            Cat.display();
-            Cat.sound();
+            cat.display();
+            cat.Sound();
 
-            Dog.display();
-            Dog.sound();
+            dog.display();
+            dog.Sound();
 
-            Bird.display();
-            Bird.sound();
+            bird.display();
+            bird.Sound();
             
 
             Console.ReadLine(); 
@@ -29,14 +29,14 @@ namespace Animal
            
         }
     }
-    public class animal1
+    public class AnimalClass
     {
         public string name { get; set; }
 
-        public animal1(string Name){
+        public AnimalClass(string Name){
             name = Name;
             }
-        public virtual void sound() {
+        public virtual void Sound() {
             Console.WriteLine("Inside animal sound");
         }
         public void display()
@@ -44,8 +44,8 @@ namespace Animal
             Console.WriteLine("This is " + name);
         }
     }
-    public class cat: animal1 {
-        public cat(string name):base(name)
+    public class Cat: AnimalClass {
+        public Cat(string name):base(name)
         {
 
         }
@@ -54,25 +54,25 @@ namespace Animal
             Console.WriteLine(name + " makes meaww meaww");
         }
     }
-    public class dog : animal1
+    public class dog : AnimalClass
     {
-        public dog(string name) : base(name)
+        public Dog(string name) : base(name)
         {
 
         }
-        public override void sound()
+        public override void Sound()
         {
             Console.WriteLine(name + " makes boww boww");
         }
     }
 
-    public class bird : animal1
+    public class Bird : AnimalClass
     {
-        public bird(string name) : base(name)
+        public Bird(string name) : base(name)
         {
 
         }
-        public override void sound()
+        public override void Sound()
         {
             Console.WriteLine(name + " makes oow oow");
         }
