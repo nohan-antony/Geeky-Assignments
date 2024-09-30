@@ -43,8 +43,7 @@ namespace calculator
                 }
                 Console.WriteLine("Do you want to continue Y/N");
                 char option=char.Parse(Console.ReadLine());
-                if (option == 'Y') {  flag = true; }
-                else { flag = false; }
+                flag = (option == 'Y');
 
                 
             }while (flag);
