@@ -41,7 +41,7 @@ WHERE LEN(FIRSTNAME)=5;
 --Find employees whose last name starts with either 'B', 'R', or 'S'.
 
 SELECT * FROM EMPLOYEES
-WHERE LASTNAME LIKE 'B%' OR LASTNAME LIKE 'R%' OR LASTNAME LIKE 'S'
+WHERE LASTNAME LIKE 'B%' OR LASTNAME LIKE 'R%' OR LASTNAME LIKE '%S'
 
 --Retrieve all employees whose first name begins with any letter from 'A' through 'M'.
 
@@ -147,7 +147,7 @@ SELECT P.PRODUCTID, P.PRODUCTNAME FROM
 PRODUCTS P
 JOIN SALES S ON P.PRODUCTID=S.PRODUCTID
 GROUP BY P.PRODUCTID,P.PRODUCTNAME
-HAVING SUM(S.QUANTITY)>5
+HAVING SUM(S.QUANTITY)>100
 ;
 
 --For each customer, find the date of their first purchase and the date of their most recent purchase.
