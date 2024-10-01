@@ -158,43 +158,88 @@ FROM  Employees;
 SELECT DATEDIFF(DAY, '2023-01-01' , '2023-12-31') AS DAYBETWEEN;
 
 --46. From an 'Orders' table, find the average number of days between order date and ship date.
-
+select * from Orders
+SELECT AVG(DATEDIFF(DAY,SHIPDATE, OrderDate)) AS AverageDateBetween FROM Orders;
 
 --47. Extract the month number from the date '2023-09-15'.
+SELECT MONTH('2023-09-15') AS MONTH;
+
 --48. From a 'Sales' table, write a query to group total sales by the quarter of the sale date.
+SELECT DATEPART(QUARTER, SALEDATE) AS Quarter,SUM(SALEAMOUNT) as SalesInQuarter
+FROM SALES
+GROUP BY DATEPART(QUARTER,SALEDATE);
 
 --49. Extract the year from the current date.
---50. From an 'Employees' table, find all employees hired in the year 2022.
---51. Check if '2023-02-30' is a valid date.
---52. Write a query to find all rows in a 'UserInputs' table where the 'EnteredDate' column contains invalid dates.
+SELECT DATEPART(YEAR, GETDATE()) AS YEAR;
 
+--50. From an 'Employees' table, find all employees hired in the year 2022.
+WHERE DATEPART(YEAR, HIREDATE)='2020';
+--51. Check if '2023-02-30' is a valid date.
+IF ISDATE('2023-02-30')=1
+PRINT 'VALID DATE'
+ELSE PRINT 'INVALID DATE';
+
+--52. Write a query to find all rows in a 'UserInputs' table where the 'EnteredDate' column contains invalid dates.
+SELECT *
+FROM UserInputs
+WHERE TRY_CAST(EnteredDate AS DATE) IS NULL;
 --53. Find the last day of the current month.
+SELECT EOMONTH(GETDATE()) AS LastDay;
+
 --54. From a 'Subscriptions' table, write a query to extend all subscription end dates to the end of their respective months.
+SELECT EOMONTH(SubscriptionDate) AS UpdatedSubscribtion
+FROM Subscriptions;
 
 --55. Display the current date and time.
+SELECT GETDATE() AS CurrentDate;
+
 --56. Compare the results of two different methods to get the current timestamp - are they always the same?
+SELECT GETDATE() AS GetDate,
+ SYSDATETIME() AS SystemTime;
+ --SYSDATE Has More precision;
 
 --57. Get the current date and time with higher precision than standard methods.
+SELECT SYSDATETIMEOFFSET() AS DateWithMorePricision;
 --58. Write a query to insert the current high-precision timestamp into a 'Logs' table.
+INSERT INTO LOGS2 (TIMESTAMP) VALUES(SYSDATETIMEOFFSET());
 
 --59. Display the current UTC date and time with high precision.
---60. Calculate the difference in microseconds between the current local time and UTC time.
+SELECT GETUTCDATE() AS UtcDate;
 
---61. Get the current date, time, and time zone offset.
+--60. Calculate the difference in microseconds between the current local time and UTC time.
+SELECT DATEDIFF(MICROSECOND, GETUTCDATE(), SYSDATETIME()) AS MicroDifference;
+
+--61. Get the current date, time, and time zone offset.  
+SELECT SYSDATETIMEOFFSET() AS CurrentDateAndTime;
 --62. From a 'GlobalEvents' table, convert all event times to include time zone offset information.
+SELECT EventTime AT TIME ZONE 'UTC' AS UTC_TIME FROM GlobalEvents;
 
 --63. Extract the month number from the date '2023-12-25'.
+SELECT MONTH('2023-12-25') AS MONTH;
 --64. From a 'Sales' table, find the total sales for each month of the previous year.
+SELECT MONTH(SALEDATE) AS MONTH, SUM(QUANTITY*UNITPRICE) AS TotalSales
+FROM SALES 
+WHERE YEAR(SALEDATE)=YEAR(GETDATE())-1
+GROUP BY MONTH(SALEDATE);
 
 --65. Extract the day of the month from '2023-03-15'.
+SELECT DAY('2023-03-15');
+
 --66. Write a query to find all orders from an 'Orders' table that were placed on the 15th day of any month.
+SELECT * FROM SALES WHERE DAY(SALEDATE)='15';
+
 
 --67. Get the name of the month for the date '2023-09-01'.
+SELECT DATENAME(MONTH, '2023-09-01');
+
 --68. From an 'Events' table, write a query to display the day of the week (in words) for each event date.
+SELECT DATENAME(WEEKDAY, EVENTDATE) AS DAYS FROM Events
 
 --69. Create a date for Christmas Day 2023.
+DECLARE @CHRISTMASS DATE;
+SET @CHRISTMASS=CONVERT(DATE,'2023-12-25');
+SELECT @CHRISTMASS AS CHRISTMASS_2023;
 --70. Write a query to convert separate year, month, and day columns from a 'Dates' table into a single DATE column.
-
-
+ SELECT DATEFROMPARTS(YearColumn, MonthColumn, DayColumn) AS FULLDATE FROM DATES;
 
 
