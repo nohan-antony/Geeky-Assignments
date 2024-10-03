@@ -82,7 +82,7 @@ WHERE DEPARTMENT='MARKETING' AND (SALARY <=60000 OR HIREDATE > '2019-06-30');
 
 SELECT *
 FROM EMPLOYEES
-WHERE  FIRSTNAME LIKE '%AN%' AND FIRSTNAME LIKE '%E';    
+WHERE  FIRSTNAME LIKE '%AN%E'    
 
 CREATE TABLE Sales (
     SaleID INT PRIMARY KEY,
@@ -115,9 +115,9 @@ GROUP BY PRODUCTID
 
 --Find the average quantity sold per sale for each product category.
 
-SELECT p.Category, AVG(s.Quantity) AS AverageQuantity
+SELECT p.Category, COALESCE(AVG(s.Quantity), 0) AS AverageQuantity
 FROM Sales s
-JOIN Products p ON s.ProductID = p.ProductID
+LEFT JOIN Products p ON s.ProductID = p.ProductID
 GROUP BY p.Category;
 
 --List the top 5 customers by their total purchase amount. Include the CustomerID and total purchase amount.
