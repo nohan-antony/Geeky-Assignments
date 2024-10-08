@@ -5,7 +5,7 @@ SELECT SUBSTRING('ABCDEFG',3,3)
 --2 2. From a table 'Employees' with a column 'FullName', write a query
 -- to extract the first name (assuming it's always the first word before a space).
 
-SELECT LEFT(FULLNAME, CHARINDEX(' ',FULLNAME,0)) AS FIRST_NAME
+SELECT LEFT(FULLNAME, CHARINDEX(' ', FULLNAME) - 1) AS FIRST_NAME
 FROM EMPLOYEES;
 
 --3. Extract the first 5 characters from the string 'SQL Server 2022'.
@@ -25,7 +25,7 @@ SELECT RIGHT(ORDERID,4) AS NUMERIC_VALUE_OF_ID;
 SELECT LEN('SQL Server Functions') AS LENGTH
 --8. From a 'Customers' table, find customers whose names are longer than 20 characters.
 SELECT * FROM CUSTOMERS
-WHERE LEN(CUSTOMERNAME)>10;
+WHERE LEN(CUSTOMERNAME)>20;
 
 --9. Compare the results of character count and byte count for the string 'SQL Server' with a trailing space.
 SELECT LEN('SQL Server   ') AS STRINGLENGTH;
@@ -43,6 +43,11 @@ SELECT CHARINDEX('Server','Microsoft SQL Server') AS STARTINDEX;
 --12. From an 'Emails' table, write a query to extract the domain name from email addresses.
 SELECT SUBSTRING(EMAIL, CHARINDEX('@',EMAIL)+1,LEN(EMAIL))
 FROM EMAILEMP;
+
+--using reverese and substring function
+SELECT REVERSE(SUBSTRING(REVERSE(EMAIL), 1, CHARINDEX('@', REVERSE(EMAIL)) - 1)) AS DOMAIN
+FROM EMAILEMP;
+
 
 --13. Find the position of the first number in the string 'ABC123DEF456'.
 SELECT PATINDEX('%[0-9]%','ABC123DEF456') AS FIRST_NUMBER;
@@ -77,9 +82,10 @@ SELECT REPLICATE('*',10);
 SELECT RIGHT(REPLICATE('0',10)+PRODUCT_ID,10) AS PRODCUT_ID_10 FROM PRODUCT;
 
 --23. Insert the string 'New ' at the beginning of 'York City'.
-UPDATE CUSTOMERS
-SET CITY='New '+CITY
-WHERE CITY='York City';
+UUPDATE CUSTOMERS
+SET CITY = CONCAT('New ', CITY)
+WHERE CITY = 'York City';
+
 SELECT * FROM CUSTOMERS;
 --24. From an 'Emails' table, mask the username part of email addresses, showing only the first and last characters.
 SELECT * FROM EMAILEMP;
