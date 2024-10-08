@@ -155,7 +155,8 @@ FROM FLIGHTS ;
 
 
 --43. Add 3 months to the current date.
-   SELECT DATEADD(DAY, 10, GETDATE()) AS NewDate;
+   SELECT DATEADD(MONTH, 3, GETDATE()) AS NewDate;
+
 --44. From an 'Employees' table, write a query to calculate each employee's retirement date (65 years from their 'DateOfBirth').
 SELECT DATEADD(YEAR, 65, DateOfBirth) AS RETIERMENT
 FROM  Employees;
@@ -189,6 +190,12 @@ ELSE PRINT 'INVALID DATE';
 SELECT *
 FROM UserInputs
 WHERE TRY_CAST(EnteredDate AS DATE) IS NULL;
+
+--using isdate()
+SELECT *
+FROM UserInputs
+WHERE ISDATE(EnteredDate) = 0;
+
 --53. Find the last day of the current month.
 SELECT EOMONTH(GETDATE()) AS LastDay;
 
