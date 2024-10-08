@@ -34,27 +34,26 @@ const movies=[
 //1. List the movie name along with the actor name of those movies released in the year 2022
 const movies2022 = movies.filter(movie => new Date(movie.ReleaseDate).getFullYear() === 2022);
 
-movies2022.forEach(movie => {
-    console.log(`${movie.MovieName} - ${movie.ActorName}`);
-});
+const movieActorList = movies2022.map(movie => ({
+    MovieName: movie.MovieName,
+    ActorName: movie.ActorName
+  }));
+  
+  console.log(movieActorList);
 
 //2. List the movie names released in the year 2023 where the actor is William Davis.
-const movie2023=movies.filter(movie => new Date(movie.ReleaseDate).getFullYear()===2023 && movie.ActorName==="William Davis");
-movie2023.forEach(movie => {
-    console.log(`${movie.MovieName} - ${movie.ActorName}`);
-});
-
+const movies2023WilliamDavis = movies.filter(movie => new Date(movie.ReleaseDate).getFullYear() === 2023 && movie.ActorName === "William Davis")
+  .map(movie => movie.MovieName);
+  console.log(movies2023WilliamDavis)
 //3. Retrieve the Actor name and release date of the movie “The Last Stand”
-const LastStand=movies.filter(movie=>movie.MovieName==="The Last Stand");
-LastStand.forEach(movie => {
-    console.log(`${movie.ActorName} - ${movie.ReleaseDate}`);
-});
+const LastStand=movies.filter(movie=>movie.MovieName==="The Last Stand").map(movie=>movie);
+console.log(LastStand);
+
 
 //4. Check whether there is any movie in the list with actor name “John Doe”
-const JohnMovie=movies.filter(movie=>movie.ActorName==="John Doe");
-JohnMovie.forEach(movie => {
-    console.log(`${movie.MovieName}`);
-});
+const JohnMovie=movies.some(movie=>movie.ActorName==="John Doe");
+
+    console.log(JohnMovie);
 
 //5. Display the count of movies where the actor name is "Sophia Williams"
 const CountSophia=movies.filter(movie=>movie.ActorName==="Sophia Williams");
@@ -69,6 +68,7 @@ console.log(countMovies);
  		 }
 	as last element
 */ 
+
 const newMovie={
     "MovieName": "Rich & Poor",
     "ActorName": "Johnie Walker",
@@ -107,8 +107,9 @@ const newMovie1={
     "ReleaseDate": "2023-08-11"
 };
 
+
 const L_DIndex = movies.findIndex(movie => movie.MovieName === "Love and Destiny");
-if(L_DIndex!=-1){
+if(L_DIndex!==-1){
     movies.slice(L_DIndex+1,0,newMovie1);
 }
 
@@ -130,9 +131,16 @@ console.log(checkDec31);
 
 //14. Update movie named  "City of Shadows" ‘s release date as  "2023-03-13"
 const indexCityOfShallows = movies.findIndex(movie => movie.MovieName === "City of Shadows");
-movies[indexCityOfShallows].ReleaseDate='2023-03-13';
+if(index!==-1){movies[indexCityOfShallows].ReleaseDate='2023-03-13';
 console.log(movies[indexCityOfShallows]);
+}else{
+    console.log("Index not found");
+}
+
 
 //15. Create a new array of movie names whose movie name length is greater than 10.
-const movieGreaterThan10=movies.filter(x=>x.MovieName.length>10);
-console.log(movieGreaterThan10);
+
+
+const movieGreaterThan10=movies.filter(x=>x.MovieName.length>10).map(x=>x.MovieName);
+
+console.log(movieGreaterThan10.join(','));
