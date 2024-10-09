@@ -1,0 +1,10 @@
+<!-- App Container (Title Only) -->
+<div>
+  <h2>{{ shoppingList }}</h2>
+
+  <!-- Add Item Container -->
+  <app-add-item [shoppingList]="shoppingList" (shoppingListChange)="shoppingList = $event"></app-add-item>
+
+  <!-- View Items Container -->
+  <app-view-list [shoppingList]="shoppingList"></app-view-list>
+</div>
