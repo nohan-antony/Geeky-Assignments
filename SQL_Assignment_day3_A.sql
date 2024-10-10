@@ -81,10 +81,13 @@ WHERE APP.APPOINTMENTDATE BETWEEN GETDATE() AND DATEADD(DAY,7,GETDATE());
 
 
 -- 8. Display all medications prescribed to patients over 60 years old, including medications not prescribed to this age group.
+SELECT Med.MedicationID, Med.MedicationName, Pat.PatientID, Pat.DateOfBirth
 FROM Medications Med
 LEFT JOIN Prescriptions Presc ON Med.MedicationID = Presc.MedicationID
 LEFT JOIN Patients Pat ON Presc.PatientID = Pat.PatientID
-WHERE DATEDIFF(YEAR, GETDATE(), PAT.DATEOFBIRTH)>=60 ;
+WHERE DATEDIFF(YEAR, Pat.DateOfBirth, GETDATE()) >= 60
+   OR Pat.PatientID IS NULL;
+
 --" including medications not prescribed to this age group." Didnt understand
 -- 9. Show all appointments from last year and any associated prescription information.
 SELECT APP.APPOINTMENTID, MED.MEDICATIONNAME, MED.DOSAGEFORM
