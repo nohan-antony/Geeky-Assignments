@@ -72,17 +72,22 @@ SELECT CONCAT(Street,', ', City,', ', State,', ',  ZIP) AS ADDRESS FROM Addresse
 --19. Change all occurrences of 'a' to 'e' in the string 'database management'.
 SELECT REPLACE('database management','a','e');
 --20. From a 'Products' table, write a query to replace all spaces in product names with underscores.
-SELECT REPLACE(PRODUCT_NAME,' ','-') FROM PRODUCT;
+SELECT REPLACE(PRODUCT_NAME,' ','_') FROM PRODUCT;
 
 --21. Create a string of 10 asterisks (*).
 SELECT REPLICATE('*',10);
 
 
 --22. Write a query to pad all product codes in a 'Products' table to a length of 10 characters with leading zeros.
-SELECT RIGHT(REPLICATE('0',10)+PRODUCT_ID,10) AS PRODCUT_ID_10 FROM PRODUCT;
+SELECT 
+    CASE 
+        WHEN PRODUCT_ID IS NULL THEN NULL 
+        ELSE RIGHT(REPLICATE('0', 10) + PRODUCT_ID, 10) 
+    END AS PRODUCT_ID_10 
+FROM PRODUCT;
 
 --23. Insert the string 'New ' at the beginning of 'York City'.
-UUPDATE CUSTOMERS
+UPDATE CUSTOMERS
 SET CITY = CONCAT('New ', CITY)
 WHERE CITY = 'York City';
 
@@ -100,7 +105,7 @@ SELECT UPPER(CUSTOMERNAME)AS CUSTOMERNAME FROM CUSTOMERS;
 --27. Convert the string 'SQL SERVER' to lowercase.
 SELECT LOWER('SQL SERVER') AS LOWER_CASE;
 --28. From a 'Products' table, write a query to convert all product descriptions to lowercase.
-SELECT LOWER(PRODUCT_ID) FROM PRODUCT;
+SELECT LOWER(PRODUCT_NAME) FROM PRODUCT;
 --29. Remove trailing spaces from the string 'SQL Server    '.
 SELECT RTRIM('SQL Server    ');
 --30. Write a query to remove trailing spaces from all email addresses in an 'Employees' table.
@@ -112,7 +117,7 @@ SELECT LTRIM('   SQL Server');
 SELECT LTRIM(COMMENT) FROM COMMENTS;
 
 --33. Display the current date in the format 'dd-MM-yyyy'.
-SELECT CONVERT(DATE, GETDATE()) AS CURRENT_DATE;
+SELECT FORMAT(GETDATE(), 'dd-MM-yyyy') AS CURRENT_DATE;
 --34. From an 'Orders' table with an 'OrderTotal' column, display the total as a currency with 2 decimal places.
 SELECT CAST(SUM(OrderTotal) AS decimal(10,2) ) AS ODERTOTAL_FORMATED;
 
@@ -180,7 +185,10 @@ GROUP BY DATEPART(QUARTER,SALEDATE);
 SELECT DATEPART(YEAR, GETDATE()) AS YEAR;
 
 --50. From an 'Employees' table, find all employees hired in the year 2022.
-WHERE DATEPART(YEAR, HIREDATE)='2020';
+SELECT EMPLOYEEID, EMPLOYEENAME
+FROM Employees
+WHERE DATEPART(YEAR, HIREDATE) = 2022;
+
 --51. Check if '2023-02-30' is a valid date.
 IF ISDATE('2023-02-30')=1
 PRINT 'VALID DATE'
@@ -239,7 +247,7 @@ GROUP BY MONTH(SALEDATE);
 SELECT DAY('2023-03-15');
 
 --66. Write a query to find all orders from an 'Orders' table that were placed on the 15th day of any month.
-SELECT * FROM SALES WHERE DAY(SALEDATE)='15';
+SELECT * FROM SALES WHERE DAY(SALEDATE)=15;
 
 
 --67. Get the name of the month for the date '2023-09-01'.
