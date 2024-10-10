@@ -53,9 +53,10 @@ FROM LOANS L
 LEFT JOIN BOOKS B ON B.BOOKID=L.BOOKID
 LEFT JOIN PATRONS P ON P.PATRONID=L.PATRONID;
 -- 6. Show all books that have never been loaned, along with their author information.
-SELECT B.BOOKID,B.TITLE
+SELECT B.BOOKID,B.TITLE,A.AUTHORID,A.AUTHORNAME
 FROM BOOKS B
 LEFT JOIN LOANS L ON B.BOOKID=L.LOANID
+    LEFT JOIN B.AUTHORID=A.AUTHORID
 WHERE L.LOANID IS NULL;
 -- 7. List all patrons who have borrowed books in the last month, along with the books they've borrowed.
  SELECT L.LOANDATE, P.PATRONNAME,P.PATRONID FROM LOANS L
