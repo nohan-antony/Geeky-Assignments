@@ -1,0 +1,15 @@
+<div>
+    <p>No of items: {{ shoppingList.length }}</p>
+  
+    <!-- Add Item Component -->
+    <app-add-item [(shoppingList)]="shoppingList"></app-add-item>
+  
+    <!-- Display the shopping list -->
+    <ul>
+      <li *ngFor="let item of shoppingList; let i = index">
+        {{ item }}
+        <button (click)="deleteItem(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
