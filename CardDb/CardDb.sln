@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardDb", "CardDb\CardDb.csproj", "{C813BF60-E381-497A-93E9-3D55D3097EB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{AA358548-048D-436B-8097-19A158651E04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C813BF60-E381-497A-93E9-3D55D3097EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C813BF60-E381-497A-93E9-3D55D3097EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C813BF60-E381-497A-93E9-3D55D3097EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C813BF60-E381-497A-93E9-3D55D3097EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA358548-048D-436B-8097-19A158651E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA358548-048D-436B-8097-19A158651E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA358548-048D-436B-8097-19A158651E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA358548-048D-436B-8097-19A158651E04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8CF00F3-5C11-45ED-9F34-DDD13398CE5D}
+	EndGlobalSection
+EndGlobal
