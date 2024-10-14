@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    width: 50%;
+    
+}
+tr:first-child{
+    background-color: gray;
+
+}
+
+td:first-child {
+    font-weight: bold;
+    background-color: rgb(192, 190, 190);
+}
