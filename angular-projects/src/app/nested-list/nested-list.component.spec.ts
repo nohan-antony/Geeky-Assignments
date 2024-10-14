@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListQuestionComponent } from './list-question.component';
+import { NestedListComponent } from './nested-list.component';
 
-describe('ListQuestionComponent', () => {
-  let component: ListQuestionComponent;
-  let fixture: ComponentFixture<ListQuestionComponent>;
+describe('NestedListComponent', () => {
+  let component: NestedListComponent;
+  let fixture: ComponentFixture<NestedListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListQuestionComponent]
+      imports: [NestedListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListQuestionComponent);
+    fixture = TestBed.createComponent(NestedListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
