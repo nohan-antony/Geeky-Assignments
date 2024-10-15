@@ -1,0 +1,54 @@
+<h2>Employee Form</h2>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName" />
+    <div *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched">
+      First Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName" />
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+      Please enter a valid email.
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" formControlName="phoneNumber" />
+    <div *ngIf="employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched">
+      Phone number is required and must be 10 digits.
+    </div>
+  </div>
+
+  <div formGroupName="address">
+    <label for="line1">Address Line 1:</label>
+    <input id="line1" formControlName="line1" />
+
+    <label for="line2">Address Line 2:</label>
+    <input id="line2" formControlName="line2" />
+
+    <label for="city">City:</label>
+    <input id="city" formControlName="city" />
+  </div>
+
+  <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+</form>
+
+<div *ngIf="submitted">
+  <h3>Employee Details</h3>
+  <p>Name: {{ employeeForm.get('firstName')?.value }} {{ employeeForm.value.lastName }}</p>
+  <p>Email: {{ employeeForm.value.email }}</p>
+  <p>Phone Number: {{ employeeForm.value.phoneNumber }}</p>
+  <p>Address Line 1: {{ employeeForm.value.address.line1 }}</p>
+  <p>Address Line 2: {{ employeeForm.value.address.line2 }}</p>
+  <p>City: {{ employeeForm.value.address.city }}</p>
+</div>
