@@ -30,13 +30,22 @@
   </div>
 
   <div>
-    <label for="projectName">Choose Project Name</label>
+    <!-- <label for="projectName">Choose Project Name</label>
     <select id="projectName" formControlName="projectName">
     <option >Select</option>
       <option *ngFor="let item of projectName|activeProjects">
         {{item.name}}
       </option>
-    </select>  
+    </select>   -->
+    <label for="projectName">Choose Project Name</label>
+    <ng-select [items]="projectName| activeProjects:true"
+           bindLabel="name"
+           bindValue="name"
+           placeholder="Choose"
+           formControlName="projectName" >
+
+          </ng-select>
+
     </div>
 
 

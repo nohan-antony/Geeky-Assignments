@@ -3,28 +3,29 @@ import { Component, Pipe } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { pipe } from 'rxjs';
 import { ActiveProjectsPipe } from "../active-projects.pipe";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
   templateUrl: './employee.component.html',
   styleUrls: [],
-  imports: [ReactiveFormsModule, CommonModule, UpperCasePipe, ActiveProjectsPipe]
+  imports: [ReactiveFormsModule, CommonModule, UpperCasePipe, ActiveProjectsPipe,NgSelectModule]
 })
 
 export class EmployeeComponent {
-    projectName=  [
-    { "name": "Hilite", "isActive": true },
-    { "name": "Lulu", "isActive": true },
-    { "name": "Cordova School", "isActive": true },
-    { "name": "Azure Heights Apartments", "isActive": true },
-    { "name": "Greenfield Mall", "isActive": true },
-    { "name": "Pinnacle Corporate Towers", "isActive": true },
-    { "name": "Sunshine Valley Resort", "isActive": true },
-    { "name": "Everest Office Park", "isActive": false },
-    { "name": "Maplewood Villas", "isActive": false },
-    { "name": "Sterling Shopping Complex", "isActive": false }
-  ];
+    projectName : Iprojects[] =[
+    { name: "Hilite", isActive: true },
+    { name: "Lulu", isActive: true },
+    { name: "Cordova School", isActive: true },
+    { name: "Azure Heights Apartments", isActive: true },
+    { name: "Greenfield Mall", isActive: true },
+    { name: "Pinnacle Corporate Towers", isActive: true },
+    { name: "Sunshine Valley Resort", isActive: true },
+    { name :"Everest Office Park", isActive: false },
+    { name: "Maplewood Villas", isActive: false },
+    { name: "Sterling Shopping Complex", isActive: false }
+  ]
   employeeForm: FormGroup;
   submitted = false;
 
@@ -69,4 +70,8 @@ interface IuseForm{
   projectName:FormControl<object|null>;
   email:FormControl<string|null>;
   address:FormGroup<Iadress>;
+}
+interface Iprojects{
+name:string;
+  isActive: boolean;
 }
