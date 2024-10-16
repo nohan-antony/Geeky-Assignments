@@ -33,13 +33,12 @@
     <label for="projectName">Choose Project Name</label>
     <select id="projectName" formControlName="projectName">
     <option >Select</option>
-      <option *ngFor="let item of this.projectName">
-        {{item.name | activeProjects : item.isActive}}
+      <option *ngFor="let item of projectName|activeProjects">
+        {{item.name}}
       </option>
-    </select>
-
-   
+    </select>  
     </div>
+
 
   <div formGroupName="address">
     <label for="line1">Address Line 1:</label>
