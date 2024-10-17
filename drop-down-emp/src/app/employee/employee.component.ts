@@ -4,13 +4,15 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { pipe } from 'rxjs';
 import { ActiveProjectsPipe } from "../active-projects.pipe";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { HoverColorDirective } from '../hover-color.directive';
+import { CheckEmailDirective } from '../check-email.directive';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
   templateUrl: './employee.component.html',
   styleUrls: [],
-  imports: [ReactiveFormsModule, CommonModule, UpperCasePipe, ActiveProjectsPipe,NgSelectModule]
+  imports: [ReactiveFormsModule, CommonModule, UpperCasePipe, ActiveProjectsPipe,NgSelectModule,HoverColorDirective,CheckEmailDirective]
 })
 
 export class EmployeeComponent {

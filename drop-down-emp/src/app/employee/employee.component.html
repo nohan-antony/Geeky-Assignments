@@ -64,8 +64,8 @@
 </form>
 <div *ngIf="submitted">
   <h3>Employee Details</h3>
-  <p>Name: {{ employeeForm.get('firstName')?.value | uppercase}} {{ employeeForm.value.lastName }}</p>
-  <p>Email: {{ employeeForm.value.email }}</p>
+  <p appHoverColor>Name: {{ employeeForm.get('firstName')?.value | uppercase}} {{ employeeForm.value.lastName }}</p>
+  <p *appCheckEmail="employeeForm.value.email">Email: {{ employeeForm.value.email }}</p>
   <p>Phone Number: {{ employeeForm.value.phoneNumber }}</p>
   <p>Project Name:{{employeeForm.value.projectName}}</p>
   <p>Address Line 1: {{ employeeForm.value.address.line1 }}</p>
